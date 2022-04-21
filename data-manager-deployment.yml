@@ -1,0 +1,30 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  creationTimestamp: null
+  labels:
+    app: data-manager
+    tier: backend
+  name: data-manager-app
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: data-manager
+      tier: backend
+  strategy: {}
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app: data-manager
+        tier: backend
+    spec:
+      containers:
+      - image: data-manager:latest
+        name: data-manager-app
+        imagePullPolicy: Never
+        ports:
+        - containerPort: 5000
+        resources: {}
+status: {}

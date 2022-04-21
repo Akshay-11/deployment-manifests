@@ -1,0 +1,36 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  creationTimestamp: null
+  labels:
+    app: monolith
+    tier: fullstack
+  name: monolith-app
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: monolith
+      tier: fullstack
+  strategy: {}
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app: monolith
+        tier: fullstack
+    spec:
+      containers:
+      - image: data-manager:latest
+        name: data-manager
+        imagePullPolicy: Never
+        ports:
+        - containerPort: 5000
+        resources: {}
+      - image: auth-service:latest
+        name: auth-service
+        imagePullPolicy: Never
+        ports:
+        - containerPort: 5001
+        resources: {}
+status: {}

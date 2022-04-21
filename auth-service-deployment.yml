@@ -1,0 +1,30 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  creationTimestamp: null
+  labels:
+    app: auth-service
+    tier: frontend
+  name: auth-service-app
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: auth-service
+      tier: frontend
+  strategy: {}
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app: auth-service
+        tier: frontend
+    spec:
+      containers:
+      - image: auth:latest
+        name: auth-service-app
+        imagePullPolicy: IfNotPresent
+        ports:
+        - containerPort: 5001
+        resources: {}
+status: {}
